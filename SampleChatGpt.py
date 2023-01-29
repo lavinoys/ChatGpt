@@ -1,7 +1,11 @@
 import openai
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # Apply the API key
-openai.api_key = "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"
+openai.api_key = os.getenv("OPENAI_API_KEY")
 
 # Define the prompt
 prompt = "Hello, I am a language model. How can I help you today?"
