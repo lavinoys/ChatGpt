@@ -7,12 +7,12 @@ load_dotenv()
 # Apply the API key
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
-# Define the prompt
-prompt = "Hello, I am a language model. How can I help you today?"
+# specify the prompt
+prompt = "Write a Python function to print the first n Fibonacci numbers."
 
-# Generate a response
-response = openai.Completion.create(
-    engine="text-davinci-002",
+# generate code
+completions = openai.Completion.create(
+    engine="code-davinci-002",
     prompt=prompt,
     max_tokens=1024,
     n=1,
@@ -20,5 +20,8 @@ response = openai.Completion.create(
     temperature=0.5,
 )
 
-# Print the response
-print(response["choices"][0]["text"])
+# get the first response
+message = completions.choices[0].text
+
+# print the response
+print(message)
